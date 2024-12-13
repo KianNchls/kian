@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XHAMSTER</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Task List</h1>
+    <hr class="task-list-separator">
+    <a href="{% url 'task_create' %}" class="create-task">Create New Task</a>
+    
+    <!-- Horizontal Line Separator -->
+
+    
+    <ul class="task-list">
+        {% for task in tasks %}
+        <li class="task-card">
+            <div class="task-header">
+                <h3>{{ task.title }}</h3>
+                <span class="status-label {% if task.status == 'pending' %}pending{% elif task.status == 'in-progress' %}in-progress{% elif task.status == 'completed' %}completed{% endif %}">
+                    {% if task.status == 'pending' %}
+                        ⏳ Pending
+                
+                    {% elif task.status == 'completed' %}
+                        ✅ Completed
+                    {% endif %}
+                </span>
+            </div>
+            
+            <div class="task-actions">
+                <a href="{% url 'task_edit' task.pk %}" class="action-btn">Edit</a>
+                <a href="{% url 'task_delete' task.pk %}" class="action-btn">Delete</a>
+            </div>
+        </li>
+        {% empty %}
+        <li>No tasks available</li>
+        {% endfor %}
+    </ul>
+    <!-- Assuming you're using this inside your base template or a specific template -->
+<a href="{% url 'logout' %}" id="logout-btn">Logout</a>
+
+</body>
+<!-- Add this just before the closing </body> tag in your HTML -->
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 Task Manager. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+</footer>
+
+</html>

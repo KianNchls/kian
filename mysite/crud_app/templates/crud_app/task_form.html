@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if form.instance.pk %}Edit Task{% else %}Create Task{% endif %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <h1 class="form-heading">
+            {% if form.instance.pk %}Edit Task{% else %}Create Task{% endif %}
+        </h1>
+        
+        <form method="POST" class="task-form">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            
+            <button type="submit" class="submit-btn">
+                {% if form.instance.pk %}Save Changes{% else %}Create Task{% endif %}
+            </button>
+        </form>
+    </div>
+</body>
+</html>

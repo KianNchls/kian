@@ -1,0 +1,184 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XNXX</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        /* Overall page styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f1f1;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+        }
+
+        /* Header styling */
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            margin-top: 30px;
+        }
+
+        /* Task List styling */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 30px auto;
+        }
+
+        li {
+            background-color: white;
+            border-radius: 8px;
+            margin: 10px 0;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        /* Task status styling */
+        .status-label {
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .pending {
+            background-color: #f39c12;
+        }
+
+        .in-progress {
+            background-color: #3498db;
+        }
+
+        .completed {
+            background-color: #2ecc71;
+        }
+
+        a {
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+
+        .create-task {
+            background-color: #8e44ad;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 30px auto;
+            display: block;
+            width: 200px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .create-task:hover {
+            background-color: #732d91;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to the Task Manager</h1>
+    <ul>
+        {% for task in tasks %}
+        <li>
+            <div class="task-header">
+                <!-- Task Title (with conditional icon) -->
+                <h3>{{ task.title }}</h3>
+                <!-- Status with color coding and icon -->
+                <span class="status-label {% if task.status == 'pending' %}pending{% elif task.status == 'in-progress' %}in-progress{% elif task.status == 'completed' %}completed{% endif %}">
+                    {% if task.status == 'pending' %} ⏳ Pending {% elif task.status == 'in-progress' %} 🔄 In Progress {% elif task.status == 'completed' %} ✅ Completed {% endif %}
+                </span>
+            </div>
+
+        </li>
+        {% empty %}
+        <li>No tasks available</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'task_create' %}" class="create-task">Create a new task (login)</a>
+
+    <!-- Footer section -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Task Manager. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

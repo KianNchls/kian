@@ -1,0 +1,330 @@
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e3f2fd;  /* Light blue background for a fresh look */
+    color: #333;  /* Dark text for readability */
+    margin: 0;
+    padding: 0;
+}
+
+/* Header and Create New Task Button */
+h1 {
+    text-align: center;
+    color: #ff4081;  /* Lively pinkish color for the title */
+    margin-top: 30px;
+    font-size: 36px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for a modern look */
+}
+
+/* Button for creating a new task */
+a.create-task {
+    display: block;
+    text-align: center;
+    background-color: #ff4081;  /* Blue color for "Create New Task" button */
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+    border-radius: 10px;
+    margin: 30px auto;
+    width: 300px;
+    transition: background-color 0.3s ease;
+}
+
+a.create-task:hover {
+    background-color: #be889a;  /* Darker blue on hover */
+}
+/* Task List Separator */
+hr.task-list-separator {
+    border: none;
+    border-top: 2px solid #ff4081;  /* Vibrant pink line */
+    margin: 20px 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Task List Styles */
+ul.task-list {
+    display: grid;  /* Use CSS grid to arrange tasks */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));  /* Responsive layout for task cards */
+    grid-gap: 20px;
+    padding: 20px;
+    list-style-type: none;
+    margin: 0;
+}
+/* General Form Styling */
+.form-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.form-heading {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ff4081;
+}
+
+.task-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    font-size: 1rem;
+    background-color: #f7f7f7;
+    transition: border 0.3s ease;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: #ff4081;
+    outline: none;
+}
+
+.submit-btn {
+    background-color: #ff4081;
+    color: white;
+    padding: 15px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #d63b6e;
+}
+
+
+/* Task Card Styles */
+li.task-card {
+    background-color: #ffffff;  /* Clean white background for the task card */
+    border: 2px solid #ff4081;  /* Vibrant pink border for the card */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;  /* Smooth hover transition */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Hover effect for task cards */
+li.task-card:hover {
+    transform: translateY(-10px);  /* Slight lift effect */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Task Title Styling */
+h3 {
+    color: #2196f3;  /* Blue color for task title */
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Task Status Styling */
+.status-label {
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+/* Status Color Classes */
+.status-label.pending {
+    background-color: #ff9800;  /* Orange for pending tasks */
+}
+
+.status-label.in-progress {
+    background-color: #ffeb3b;  /* Yellow for tasks in progress */
+}
+
+.status-label.completed {
+    background-color: #4caf50;  /* Green for completed tasks */
+}
+
+/* Task Action Links (Edit/Delete) */
+.task-actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Action Button Styles */
+.action-btn {
+    display: inline-block;
+    text-align: center;
+    background-color: #ff4081;  /* Bright pink background for buttons */
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    width: 45%;  /* Ensure the buttons don't stretch too wide */
+}
+
+.action-btn:hover {
+    background-color: #f50057;  /* Darker pink on hover */
+}
+/* Login Page Styles */
+
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+#login_body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('{% static "images/background.jpg" %}'); /* You can set a background image */
+    background-size: cover;
+    background-position: center;
+}
+/* General styles for the logout button */
+#logout-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #ff4d4d; /* Red color for logout */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#logout-btn:hover {
+    background-color: #ff1a1a; /* Darker red on hover */
+    transform: scale(1.05); /* Slight scale-up effect */
+}
+
+#logout-btn:active {
+    background-color: #e60000; /* Even darker red when clicked */
+    transform: scale(1); /* Reset scale on click */
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+/* Footer Styling */
+footer {
+    background-color: #ff4081; /* Dark background */
+    color: white;           /* White text color */
+    text-align: center;     /* Center the content */
+    position: relative;
+    bottom: 0;
+    width: 100%;    
+    display: flex;
+    flex-direction: column;        /* Full width */
+    justify-content: space-between;  /* This will push the footer to the bottom */
+}
+
+/* Footer content styling */
+.footer-content {
+    max-width: 1200px;      /* Set a max width */
+    margin: 0 auto;         /* Center the content */
+    padding: 0 1px;        /* Add some side padding */
+}
+
+/* Footer links styling */
+.footer-links {
+    margin-top: 10px;
+}
+
+.footer-links a {
+    color: white;         /* Red color for links */
+    text-decoration: none;  /* Remove underline */
+    margin: 0 1px;         /* Space between links */
+    font-size: 0.9rem;      /* Slightly smaller font */
+}
+
+.footer-links a:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: #ff1a1a;             /* Darker red on hover */
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .footer-links {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .footer-links a {
+        display: block;
+        margin: 5px 0;      /* Stack the links on smaller screens */
+    }
+}
+
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.register-link {
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.register-link a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design: Stack columns on small screens */
+@media (max-width: 768px) {
+    ul.task-list {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));  /* Make columns narrower on small screens */
+    }
+}
